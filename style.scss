@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+$size : 30px;
+
+@keyframes rotate_all {
+    0%{
+        transform: rotate(0deg);
+    }
+    5%{
+        transform: rotate(-20deg);
+    }
+    15%{
+        transform: rotate(-10deg);
+    }
+    85%{
+        transform: rotate(110deg);
+    }
+    90%{
+        transform: rotate(100deg);
+    }
+    100%{
+        transform: rotate(90deg);
+    }
+}
+body{
+    background: black;
+    width: 100vw;
+    height: 100vh;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .container{
+        width: -moz-fit-content;
+        width: fit-content;
+        height: 100%;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        grid-template-columns: repeat(3, #{$size}); 
+        grid-template-rows: repeat(3, #{$size});
+        animation: rotate_all 1s ease infinite .5s;
+    
+        .item{
+            width: $size;
+            height: $size;
+            position: relative;
+            overflow: hidden;
+    
+            &::after{
+                content: '';
+                width: 24px;
+                height: 24px;
+                border: 3.5px solid #fff;
+                border-radius: 50%;
+                position: absolute;
+            }
+    
+            &:nth-child(1){
+                grid-area: 1 / 2 / 2 / 3;
+    
+                &::after{
+                    animation-delay: .05s;
+                }
+            }
+            &:nth-child(2){
+                grid-area: 2 / 1 / 3 / 2;
+                
+                &::after{
+                    animation-delay: .1s;
+                }
+            }
+            &:nth-child(3){
+                grid-area: 2 / 2 / 3 / 3;
+                
+                &::after{
+                    animation-delay: .15s;
+                }
+            }
+            &:nth-child(4){
+                grid-area: 2 / 3 / 3 / 4;
+                
+                &::after{
+                    animation-delay: .2s;
+                }
+            }
+            &:nth-child(5){
+                grid-area: 3 / 2 / 4 / 3;
+                
+                &::after{
+                    animation-delay: .25s;
+                }
+            }
+        }
+    }
+}
